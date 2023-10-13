@@ -1,12 +1,16 @@
 package coffeebeanapp.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,15 +24,16 @@ public class Cliente {
 	
 	private String nome;
 	
-	@ManyToOne
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("cliente")
-	private ClienteMarca clienteMarca;
+	private List<ClienteMarca> clienteMarca;
+	
 
-	public ClienteMarca getClienteMarca() {
+	public List<ClienteMarca> getClienteMarca() {
 		return clienteMarca;
 	}
 
-	public void setClienteMarca(ClienteMarca clienteMarca) {
+	public void setClienteMarca(List<ClienteMarca> clienteMarca) {
 		this.clienteMarca = clienteMarca;
 	}
 

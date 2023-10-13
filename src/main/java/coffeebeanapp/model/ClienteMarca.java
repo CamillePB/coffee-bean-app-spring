@@ -1,30 +1,33 @@
 package coffeebeanapp.model;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_cliente_marca")
 public class ClienteMarca {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
 	private Long quantidade;
 	
 	private String data;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "clienteMarca", cascade = CascadeType.REMOVE)
+	@ManyToOne
 	@JsonIgnoreProperties("clienteMarca")
-	private List<Marca> marca;
+	private Marca marca;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "clienteMarca", cascade = CascadeType.REMOVE)
+	@ManyToOne
 	@JsonIgnoreProperties("clienteMarca")
-	private List<Cliente> cliente;
+	private Cliente cliente;
 
 	public Long getQuantidade() {
 		return quantidade;
@@ -42,19 +45,27 @@ public class ClienteMarca {
 		this.data = data;
 	}
 
-	public List<Marca> getMarca() {
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Marca getMarca() {
 		return marca;
 	}
 
-	public void setMarca(List<Marca> marca) {
+	public void setMarca(Marca marca) {
 		this.marca = marca;
 	}
 
-	public List<Cliente> getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(List<Cliente> cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 

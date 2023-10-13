@@ -1,12 +1,17 @@
 package coffeebeanapp.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,15 +27,15 @@ public class Marca {
 	@JsonIgnoreProperties("marca")
 	private Tipo tipo;
 	
-	@ManyToOne
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "marca", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("marca")
-	private ClienteMarca clienteMarca;
+	private List<ClienteMarca> clienteMarca;
 	
-	public ClienteMarca getClienteMarca() {
+	public List<ClienteMarca> getClienteMarca() {
 		return clienteMarca;
 	}
 
-	public void setClienteMarca(ClienteMarca clienteMarca) {
+	public void setClienteMarca(List<ClienteMarca> clienteMarca) {
 		this.clienteMarca = clienteMarca;
 	}
 

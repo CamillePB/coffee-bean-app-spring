@@ -2,8 +2,8 @@ package coffeebeanapp.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import coffeebeanapp.model.Cliente;
+import coffeebeanapp.model.Marca;
 
-public interface MarcaRepository  extends JpaRepository<Cliente, Long>{
+public interface MarcaRepository  extends JpaRepository<Marca, Long>{
 
 }
