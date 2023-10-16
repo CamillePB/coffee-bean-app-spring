@@ -26,14 +26,14 @@ public class Tipo {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tipo", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tipo")
-	private List<Marca> marca;
+	private List<MarcaTipo> marcaTipo;
 
-	public List<Marca> getMarca() {
-		return marca;
+	public List<MarcaTipo> getMarcaTipo() {
+		return marcaTipo;
 	}
 
-	public void setMarca(List<Marca> marca) {
-		this.marca = marca;
+	public void setMarcaTipo(List<MarcaTipo> marcaTipo) {
+		this.marcaTipo = marcaTipo;
 	}
 
 	public Long getId() {

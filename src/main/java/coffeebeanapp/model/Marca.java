@@ -10,7 +10,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -22,15 +21,25 @@ public class Marca {
 	private Long id;
 	
 	private String nome;
-	
-	@ManyToOne
-	@JsonIgnoreProperties("marca")
-	private Tipo tipo;
-	
+		
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "marca", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("marca")
 	private List<ClienteMarca> clienteMarca;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "marca", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("marca")
+	private List<MarcaTipo> marcaTipo;
+	
+	
+	
+	public List<MarcaTipo> getMarcaTipo() {
+		return marcaTipo;
+	}
+
+	public void setMarcaTipo(List<MarcaTipo> marcaTipo) {
+		this.marcaTipo = marcaTipo;
+	}
+
 	public List<ClienteMarca> getClienteMarca() {
 		return clienteMarca;
 	}
@@ -53,14 +62,6 @@ public class Marca {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Tipo getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
 	}
 	
 	

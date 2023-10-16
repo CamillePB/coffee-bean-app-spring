@@ -1,9 +1,11 @@
 package coffeebeanapp.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import coffeebeanapp.model.ClienteMarca;
 
 public interface ClienteMarcaRepository  extends JpaRepository<ClienteMarca, Long>{
-
+	List<ClienteMarca> findClienteMarcaEntitiesByClienteIdContaining(Long clienteId);
 }
