@@ -13,7 +13,7 @@ import coffeebeanapp.model.Marca;
 import coffeebeanapp.repository.MarcaRepository;
 
 @RestController
-@RequestMapping("/marcas")
+@RequestMapping("v1/marcas")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MarcaController {
 	@Autowired

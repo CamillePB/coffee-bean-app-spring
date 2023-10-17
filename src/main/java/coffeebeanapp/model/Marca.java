@@ -24,28 +24,10 @@ public class Marca {
 		
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "marca", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("marca")
-	private List<ClienteMarca> clienteMarca;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "marca", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("marca")
-	private List<MarcaTipo> marcaTipo;
-	
-	
-	
-	public List<MarcaTipo> getMarcaTipo() {
-		return marcaTipo;
-	}
+	private List<Venda> venda;
 
-	public void setMarcaTipo(List<MarcaTipo> marcaTipo) {
-		this.marcaTipo = marcaTipo;
-	}
-
-	public List<ClienteMarca> getClienteMarca() {
-		return clienteMarca;
-	}
-
-	public void setClienteMarca(List<ClienteMarca> clienteMarca) {
-		this.clienteMarca = clienteMarca;
+	public List<Venda> getVenda() {
+		return venda;
 	}
 
 	public Long getId() {

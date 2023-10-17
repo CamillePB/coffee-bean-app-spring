@@ -1,6 +1,7 @@
 package coffeebeanapp.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import coffeebeanapp.repository.TipoRepository;
 import jakarta.websocket.server.PathParam;
 
 @RestController
-@RequestMapping("/tipos")
+@RequestMapping("v1/tipos")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TipoController {
 	@Autowired
@@ -22,12 +23,20 @@ public class TipoController {
 
 	@GetMapping
 	public ResponseEntity<List<Tipo>> getAll() {
-		return ResponseEntity.ok(tipoRepository.findAll()); // SELECT * FROM tb_categorias
+		return ResponseEntity.ok(tipoRepository.findAll());
 	}
-	
+
+	// tipo por id
+	@GetMapping("/id")
+	public ResponseEntity<Optional<Tipo>> obterIdTipo(@PathParam("id") Long id) {
+		return ResponseEntity.ok(tipoRepository.findById(id));
+
+	}
+
+	// filtrar tipo por nome
 	@GetMapping("/nome")
-	public List<Tipo> retornoTipoPorNome(@PathParam("nome") String nome) {// padrao para requisições de url
+	public List<Tipo> obterNomeTipo(@PathParam("nome") String nome) {
 		return tipoRepository.findTipoEntityByNomeContaining(nome);
 	}
-	
+
 }

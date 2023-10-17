@@ -26,15 +26,10 @@ public class Cliente {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("cliente")
-	private List<ClienteMarca> clienteMarca;
-	
+	private List<Venda> venda;
 
-	public List<ClienteMarca> getClienteMarca() {
-		return clienteMarca;
-	}
-
-	public void setClienteMarca(List<ClienteMarca> clienteMarca) {
-		this.clienteMarca = clienteMarca;
+	public List<Venda> getVenda() {
+		return venda;
 	}
 
 	public Long getId() {

@@ -10,8 +10,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_cliente_marca")
-public class ClienteMarca {
+@Table(name = "tb_venda")
+public class Venda {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,12 +22,24 @@ public class ClienteMarca {
 	private String data;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("clienteMarca")
+	@JsonIgnoreProperties("venda")
 	private Marca marca;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("clienteMarca")
+	@JsonIgnoreProperties("venda")
 	private Cliente cliente;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("venda")
+	private Tipo tipo;
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
 
 	public Long getQuantidade() {
 		return quantidade;

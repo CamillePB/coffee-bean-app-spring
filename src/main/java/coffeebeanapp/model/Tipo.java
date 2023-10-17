@@ -17,7 +17,6 @@ import jakarta.persistence.Table;
 @Table(name = "tb_tipo")
 public class Tipo {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -26,14 +25,10 @@ public class Tipo {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tipo", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tipo")
-	private List<MarcaTipo> marcaTipo;
+	private List<Venda> venda;
 
-	public List<MarcaTipo> getMarcaTipo() {
-		return marcaTipo;
-	}
-
-	public void setMarcaTipo(List<MarcaTipo> marcaTipo) {
-		this.marcaTipo = marcaTipo;
+	public List<Venda> getVenda() {
+		return venda;
 	}
 
 	public Long getId() {
