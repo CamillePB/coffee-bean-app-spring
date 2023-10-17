@@ -54,13 +54,13 @@ public class VendaController {
 		return ResponseEntity.ok(vendaRepository.findAllByDataContainingIgnoreCase(data));
 	}
 
-	@GetMapping("/datas/{dataMin}/{dataMax}")
-	public ResponseEntity<List<Venda>> filtrarEntreDatas(
-	        @PathParam("dataMin") String dataMin,
-	        @PathParam("dataMax") String dataMax){ 
-	return ResponseEntity.ok(vendaRepository.findByDataBetween(dataMin, dataMax));
-
-	}
+//	@GetMapping("/datas/{dataMin}/{dataMax}")
+//	public ResponseEntity<List<Venda>> filtrarEntreDatas(
+//	        @PathParam("dataMin") String dataMin,
+//	        @PathParam("dataMax") String dataMax){ 
+//	return ResponseEntity.ok(vendaRepository.findByDataBetween(dataMin, dataMax));
+//
+//	}
 	
 //	@GetMapping("/datasteste/{dataMin}/{dataMax}")
 //	@Query("SELECT * FROM data WHERE data between data = :dataMin and data = :dataMax")
